@@ -20,7 +20,7 @@ jobs:
     - name: Install Ubuntu requirement
       run: |
         sudo apt-get update
-        sudo apt-get -y install autoconf automake bison flex gcc libelf-dev make texinfo libncurses5-dev patch python subversion wget zlib1g-dev libtool-bin python-dev bzip2 libgmp3-dev pkg-config
+        sudo apt-get -y install autoconf automake bison flex gcc libelf-dev make texinfo libncurses5-dev patch subversion wget zlib1g-dev libtool-bin python2.7 python3-pip bzip2 libgmp3-dev pkg-config
     - name: Runs all the stages in the shell
       run: |
         mkdir $PWD/ps3dev
