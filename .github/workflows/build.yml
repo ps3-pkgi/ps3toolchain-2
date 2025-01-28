@@ -11,23 +11,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [ubuntu-22.04-arm, ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
-    - name: Install Ubuntu requirements
-      if: matrix.os == 'ubuntu-latest'
+    - name: Install Ubuntu requirement
       run: |
         sudo apt-get update
         sudo apt-get -y install autoconf automake bison flex gcc libelf-dev make texinfo libncurses5-dev patch python subversion wget zlib1g-dev libtool-bin python-dev bzip2 libgmp3-dev pkg-config
-    
-    - name: Install macOS requirements
-      if: matrix.os == 'macos-latest'
-      run: |
-        brew update
-        brew install autoconf automake openssl libelf ncurses zlib gmp wget pkg-config
-
     - name: Runs all the stages in the shell
       run: |
         mkdir $PWD/ps3dev
@@ -36,7 +28,7 @@ jobs:
         export PATH=$PATH:$PS3DEV/bin
         export PATH=$PATH:$PS3DEV/ppu/bin
         export PATH=$PATH:$PS3DEV/spu/bin
-        ./toolchain.sh
+        bash -x ./toolchain.sh
 
     - name: Get short SHA
       id: slug
