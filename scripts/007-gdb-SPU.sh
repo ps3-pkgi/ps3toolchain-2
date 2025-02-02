@@ -13,7 +13,7 @@ if [ ! -d ${GDB} ]; then
   if [ ! -f config.sub ]; then wget --continue http://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
 
   ## Unpack the source code.
-  tar xfvj ${GDB}.tar.bz2
+  nohup tar xfvj ${GDB}.tar.bz2
 
   ## Replace config.guess and config.sub
   cp config.guess config.sub ${GDB}
